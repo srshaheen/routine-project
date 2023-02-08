@@ -45,7 +45,7 @@ def LogIn(request):
             login(request, user)
             return redirect(DashBoard)
         else:
-            return HttpResponse("User Name or Password is incorrect")
+            return render(request, 'routineapp/login.html', {'message': 'Incorrect Password or Username'})
 
     return render(request, 'routineapp/login.html')
 
