@@ -1,0 +1,66 @@
+{% extends 'routineapp/base.html' %}
+{% block content %}
+
+<style>
+  .dashboard{
+    background: url('../../static/images/bg.jpg') no-repeat center; 
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+    padding-top: 70px;
+    margin-top: -95px;
+  }
+  .dashboard::after{
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+  }
+
+  table tr{
+    text-align: center;
+    color: white;
+    font-size: 18px;
+  }
+  table tr:hover{
+    color: cyan;
+  }
+</style>
+<div class="dashboard">
+  <div class="container pt-5 px-5">
+    <h3 class="text-light bg-info p-2 text-center w-25 rounded-2 mb-3">Next Day Routine</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr class="text-bg-secondary">
+          <th>Class Date</th>
+          <th>Subject</th>
+          <th>Teacher</th>
+          <th>Time</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for x in routine %}
+        <tr class="routine">
+          <td class="date">{{x.date}}</td>
+          <td>{{x.course_name}}</td>
+          <td>{{x.t_name}}</td>
+          <td>{{x.time}}</td>
+          <td class="status"></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="action-btn d-flex justify-content-end">
+    <button id="btn" class="btn btn-outline-warning" onclick="Upcoming()">Upcoming Class</button>
+    </div>
+  </div>
+</div>
+{% endblock %}

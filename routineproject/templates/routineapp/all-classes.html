@@ -1,0 +1,63 @@
+{% extends 'routineapp/base.html' %} {% block content %}
+
+<style>
+  .all-classes{
+    background: url('../../static/images/t-1.jpg') no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    margin-top: -95px;
+    padding-top: 150px;
+    position: relative;
+    z-index: 1;
+  }
+  .all-classes::after{
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+  }
+  table tr{
+    text-align: center;
+    color: white;
+    font-size: 18px;
+  }
+  table tr:hover{
+    color: cyan;
+  }
+</style>
+
+<div class="all-classes">
+  <div class="container px-5">
+    <h3 class="text-light bg-info p-2 text-center w-50 rounded-2 mb-3">All Courses & Total Class</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr class="text-bg-dark">
+          <th>Course ID</th>
+          <th>Course Name</th>
+          <th>Teacher Name</th>
+          <th>Total Class</th>
+          <th>Credit</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for x in course %}
+        <tr>
+          <td>{{x.course_id}}</td>
+          <td>{{x.course_name}}</td>
+          <td>{{x.t_name}}</td>
+          <td>{{x.total_class}}</td>
+          <td>{{x.course_credit}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}
