@@ -10,11 +10,21 @@ from .models import Course, Routine
 
 @login_required(login_url='login')
 def DashBoard(request):
+    if request.method == 'POST':
+        department = request.POST.get('department')
+        all_routine = Routine.objects.filter(department=department)
+        return render(request, 'routineapp/dashboard.html', {'routine': all_routine})
+
     all_routine = Routine.objects.all()
     return render(request, 'routineapp/dashboard.html', {'routine': all_routine})
 
 
 def AllCourses(request):
+    if request.method == 'POST':
+        department = request.POST.get('department')
+        all_courses = Course.objects.filter(department=department)
+        return render(request, 'routineapp/all-classes.html', {'course': all_courses})
+
     all_courses = Course.objects.all()
     return render(request, 'routineapp/all-classes.html', {'course': all_courses})
 
@@ -28,7 +38,7 @@ def SignUp(request):
         pass2 = request.POST.get('password2')
 
         if pass1 != pass2:
-            return HttpResponse('Your Password and confirm password is not same')
+            return render(request, 'routineapp/signup.html', {'alert': 'Your Password and confirm password is not same'})
         my_user = User.objects.create_user(uname, email, pass1)
         my_user.save()
         return redirect(LogIn)

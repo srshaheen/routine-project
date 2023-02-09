@@ -1,9 +1,10 @@
 from django.contrib import admin
 
-from .models import Course, Routine, Teacher
+from .models import Course, Department, Routine, Teacher
 
 # Register your models here.
 admin.site.register(Teacher)
+admin.site.register(Department)
 
 
 class RoutineAdmin(admin.ModelAdmin):

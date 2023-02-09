@@ -1,9 +1,8 @@
-{% extends 'routineapp/base.html' %}
-{% block content %}
+{% extends 'routineapp/base.html' %} {% block content %}
 
 <style>
-  .dashboard{
-    background: url('../../static/images/bg.jpg') no-repeat center; 
+  .dashboard {
+    background: url("../../static/images/bg.jpg") no-repeat center;
     height: 100vh;
     width: 100%;
     background-size: cover;
@@ -12,8 +11,8 @@
     padding-top: 70px;
     margin-top: -95px;
   }
-  .dashboard::after{
-    content: '';
+  .dashboard::after {
+    content: "";
     display: block;
     height: 100%;
     width: 100%;
@@ -24,42 +23,98 @@
     z-index: -1;
   }
 
-  table tr{
+  table tr {
     text-align: center;
     color: white;
     font-size: 18px;
   }
-  table tr:hover{
+  table tr:hover {
     color: cyan;
+  }
+  table thead {
+    letter-spacing: 3px;
+  }
+
+  form select {
+    width: 200px !important;
+    display: inline !important;
+    color: white !important;
+    background: transparent !important;
+  }
+  form select option {
+    color: #000000 !important;
+  }
+
+  .table-container {
+    overflow-y: scroll;
+    height: 60vh;
+  }
+  .table-container::-webkit-scrollbar {
+    width: 2px;
+    background-color: #f5f5f5;
+  }
+
+  .table-container::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 10px;
   }
 </style>
 <div class="dashboard">
   <div class="container pt-5 px-5">
-    <h3 class="text-light bg-info p-2 text-center w-25 rounded-2 mb-3">Next Day Routine</h3>
-    <table class="table table-bordered">
-      <thead>
-        <tr class="text-bg-secondary">
-          <th>Class Date</th>
-          <th>Subject</th>
-          <th>Teacher</th>
-          <th>Time</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for x in routine %}
-        <tr class="routine">
-          <td class="date">{{x.date}}</td>
-          <td>{{x.course_name}}</td>
-          <td>{{x.t_name}}</td>
-          <td>{{x.time}}</td>
-          <td class="status"></td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+    <div class="row">
+      <div class="col-8">
+        <h3 class="text-light bg-warning p-2 text-center w-50 rounded-2 mb-3">
+          Class Routine
+        </h3>
+      </div>
+      <div class="col-4 d-flex justify-content-end">
+        <form action="" method="post">
+          {% csrf_token %}
+          <select name="department" id="department" class="form-select">
+            <option value="1">Web</option>
+            <option value="2">ICT</option>
+            <option value="3">Tourism</option>
+          </select>
+          <input
+            type="submit"
+            name=""
+            id=""
+            value="Submit"
+            class="btn btn-outline-warning mb-1"
+          />
+        </form>
+      </div>
+    </div>
+    <div class="table-container">
+      <table class="table table-bordered">
+        <thead class="text-uppercase">
+          <tr class="text-bg-secondary">
+            <th>Class Date</th>
+            <th>Department</th>
+            <th>Subject</th>
+            <th>Teacher</th>
+            <th>Time</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for x in routine %}
+          <tr class="routine">
+            <td class="date">{{x.date}}</td>
+            <td>{{x.department}}</td>
+            <td>{{x.course_name}}</td>
+            <td>{{x.t_name}}</td>
+            <td>{{x.time}}</td>
+            <td class="status"></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
     <div class="action-btn d-flex justify-content-end">
-    <button id="btn" class="btn btn-outline-warning" onclick="Upcoming()">Upcoming Class</button>
+      <button id="btn" class="btn btn-outline-warning" onclick="Upcoming()">
+        Upcoming Class
+      </button>
     </div>
   </div>
 </div>

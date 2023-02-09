@@ -20,13 +20,12 @@
       type="image/x-icon"
     />
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
-
   </head>
   <style>
-    .nav-link{
+    .nav-link {
       transition: all 0.7s;
     }
-    .nav-link:hover{
+    .nav-link:hover {
       color: beige !important;
       background: tomato;
       border-radius: 5px;
@@ -58,22 +57,28 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active text-light" aria-current="page" href="{% url 'home' %}"
+              <a
+                class="nav-link active text-light"
+                aria-current="page"
+                href="{% url 'home' %}"
                 >Dashboard</a
               >
             </li>
             <li class="nav-item ps-4">
-              <a class="nav-link text-light" href="{% url 'all_courses' %}">All Courses</a>
+              <a class="nav-link text-light" href="{% url 'all_courses' %}"
+                >All Courses</a
+              >
             </li>
             <li class="nav-item px-4">
-              <a class="nav-link text-light" href="{% url 'logout' %}">Log Out</a>
+              <a class="nav-link text-light" href="{% url 'logout' %}"
+                >Log Out</a
+              >
             </li>
           </ul>
         </div>
       </div>
     </nav>
     {% block content %}{% endblock %}
-
 
     <script src="{% static 'main.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>

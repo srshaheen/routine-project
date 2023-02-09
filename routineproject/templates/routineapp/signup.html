@@ -142,7 +142,13 @@
       <h3>Signup Here</h3>
 
       <label for="username">Username</label>
-      <input type="text" placeholder="Username" name="username" id="username" required/>
+      <input
+        type="text"
+        placeholder="Username"
+        name="username"
+        id="username"
+        required
+      />
 
       <label for="email">Email</label>
       <input
@@ -170,6 +176,7 @@
         name="password2"
         required
       />
+      <p>{{alert}}</p>
       <button type="submit">Signup</button>
 
       <a href="{% url 'login' %}">I have already an account</a>
