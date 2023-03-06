@@ -8,8 +8,8 @@ from django.views.generic.edit import CreateView
 from .forms import RoutineForm
 from .models import Course, Routine
 
-# home page function
 
+# home page function
 @login_required(login_url='login')
 def DashBoard(request):
     if request.method == 'POST':
@@ -21,6 +21,7 @@ def DashBoard(request):
     return render(request, 'routineapp/dashboard.html', {'routine': all_routine})
 
 
+#all course fucntion  
 def AllCourses(request):
     if request.method == 'POST':
         department = request.POST.get('department')
@@ -66,12 +67,6 @@ def LogIn(request):
 def LogOut(request):
     logout(request)
     return redirect(LogIn)
-
-
-############add-routine form
-def addRoutine(request):
-    frm = RoutineForm()
-    return render(request, 'routineapp/add-routine.html', {'form': frm})
 
 
 
