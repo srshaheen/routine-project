@@ -1,7 +1,6 @@
-
 let date = document.getElementsByClassName('date');
 let date2 = Array.from(date);
-console.log(date2)
+
 
 
 for(var i = 0; i < date2.length; i++){
@@ -41,6 +40,18 @@ function Upcoming() {
         }
     }
 }
+
+
+//extra feature
+
+
+
+
+
+
+
+
+
 
 
 

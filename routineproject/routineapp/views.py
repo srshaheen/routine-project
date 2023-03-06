@@ -2,11 +2,13 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import HttpResponse, redirect, render
+from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView
 
+from .forms import RoutineForm
 from .models import Course, Routine
 
 # home page function
-
 
 @login_required(login_url='login')
 def DashBoard(request):
@@ -64,3 +66,12 @@ def LogIn(request):
 def LogOut(request):
     logout(request)
     return redirect(LogIn)
+
+
+############add-routine form
+def addRoutine(request):
+    frm = RoutineForm()
+    return render(request, 'routineapp/add-routine.html', {'form': frm})
+
+
+

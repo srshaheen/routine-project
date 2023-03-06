@@ -21,6 +21,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'jazzmin',
+    # 'admin_soft.apps.AdminSoftDashboardConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -127,12 +128,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Jazzmin configuration
 
 JAZZMIN_SETTINGS = {
-    "site_title": "Next Day Routine | Sheikh Hasina National Institute of Youth Development",
+    "site_title": "Daily Routine | Sheikh Hasina National Institute of Youth Development",
 
-    "site_header": "Next Day Routine",
+    "site_header": "Daily Routine",
 
     # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_brand": "Next Day Routine",
+    "site_brand": "Daily Routine",
 
     # Logo to use for your site, must be present in static files, used for brand on top left
     "site_logo": "images/logo.png",
@@ -160,7 +161,7 @@ JAZZMIN_SETTINGS = {
     "search_model": ["auth.User", "auth.Group"],
 
     # Field name on user model that contains avatar ImageField/URLField/Charfield or a callable that receives the user
-    "user_avatar": None,
+    "user_avatar": "images/picon.png",
 
     ############
     # Top Menu #
@@ -170,11 +171,11 @@ JAZZMIN_SETTINGS = {
     "topmenu_links": [
 
         # Url that gets reversed (Permissions can be added)
-        {"name": "Home",  "url": "admin:index",
+        {"name": "Admin Dashboard",  "url": "admin:index",
             "permissions": ["auth.view_user"]},
 
-        # external url that opens in a new window (Permissions can be added)
-        {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues",
+        # external url that opens in a new window (Permissions can be added)      
+        {"name": "Website Dashboard", "url": "http://127.0.0.1:8000/home",
             "new_window": True},
 
         # model admin to link to (Permissions checked against model)
@@ -189,12 +190,6 @@ JAZZMIN_SETTINGS = {
     #############
 
     # Additional links to include in the user menu on the top right ("app" url type is not allowed)
-    "usermenu_links": [
-        {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues",
-            "new_window": True},
-        {"model": "auth.user"}
-    ],
-
     #############
     # Side Menu #
     #############
